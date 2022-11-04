@@ -12,7 +12,8 @@ import java.io.InputStreamReader;
 public class CardGame {
 
     public static void startSimulation(String nameOfFile, int x) throws IOException {
-        Pack packOfCards = new Pack(x, nameOfFile);
+        Pack temp = new Pack(x, nameOfFile);
+        Card[] packOfCards = temp.getPackOfCards();
     }
 
     public static void main(String args[]) {
@@ -24,8 +25,10 @@ public class CardGame {
             System.out.println("Enter the filename of the desired pack here: ");
             String nameOfFile = bReader.readLine();
 
-            System.out.println(x);
-            System.out.println(nameOfFile);
+            System.out.println("The number of players you have selected are: " + x);
+            System.out.println("The name of the file you have selected is: " + nameOfFile);
+
+            startSimulation(nameOfFile, x);
 
 
         } catch (IOException e) {
