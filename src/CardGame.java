@@ -11,6 +11,10 @@ import java.io.InputStreamReader;
 
 public class CardGame {
 
+    public static void startSimulation(String nameOfFile, int x) throws IOException {
+        Pack packOfCards = new Pack(x, nameOfFile);
+    }
+
     public static void main(String args[]) {
 
         try {
@@ -27,9 +31,5 @@ public class CardGame {
         } catch (IOException e) {
             System.out.println("Error: " + e);
         }
-    }
-
-    public static void startSimulation(String nameOfFile, int x) throws IOException {
-        Pack packOfCards = new Pack(x, nameOfFile);
     }
 }
