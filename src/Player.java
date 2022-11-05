@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Player implements Runnable{
 
     private final int playerId;
-    private int cards;
+    private int numberOfcards;
     private final Card[] playerCards;
     private final String location;
 
@@ -23,7 +23,7 @@ public class Player implements Runnable{
     public Player(int playerId) {
         this.playerId = playerId;
         this.playerCards = new Card[5];
-        this.cards = 0;
+        this.numberOfcards = 0;
         this.location = "Logs" + File.separator + "player" + this.playerId + "_output.txt";
         try {
             File playerOutFile = new File(this.location);
@@ -38,4 +38,7 @@ public class Player implements Runnable{
         }
     }
 
+    public int getPlayerId(){
+        return this.playerId;
+    }
 }
