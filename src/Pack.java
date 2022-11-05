@@ -59,7 +59,7 @@ public class Pack {
                 System.out.println("The file entered did not contain a sufficient amount of cards!");
             }
 
-            //Closes buffer reader
+            //Closes buffered reader
             bReader.close();
 
         } catch (NumberFormatException e) {

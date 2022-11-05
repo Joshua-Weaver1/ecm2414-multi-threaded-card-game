@@ -12,8 +12,15 @@ import java.io.InputStreamReader;
 public class CardGame {
 
     public static void startSimulation(String nameOfFile, int x) throws IOException {
-        Pack temp = new Pack(x, nameOfFile);
-        Card[] packOfCards = temp.getPackOfCards();
+        Player[] players = new Player[x];
+        Pack gameCards = new Pack(x, nameOfFile);
+        Card[] packOfCards = gameCards.getPackOfCards();
+
+        //Starting player threads
+        for (int i = 1; i <= x; i++) {
+            players[i - 1] = new Player(i);
+            players[i - 1].run();
+        }
     }
 
     public static void main(String args[]) {
