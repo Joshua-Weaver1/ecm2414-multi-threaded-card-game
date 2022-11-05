@@ -15,6 +15,10 @@ public class CardDeck {
         this.deckCards = new Card[5];
     }
 
+    public int getDeckId() {
+        return this.deckId;
+    }
+
     public void addToDeck(Card card) {
         this.deckCards[numberOfCards++] = card;
     }

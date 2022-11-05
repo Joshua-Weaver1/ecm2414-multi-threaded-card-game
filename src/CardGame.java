@@ -13,8 +13,8 @@ public class CardGame {
 
     public static void startSimulation(String nameOfFile, int x) throws IOException {
         Player[] players = new Player[x];
-        Pack gameCards = new Pack(x, nameOfFile);
-        Card[] packOfCards = gameCards.getPackOfCards();
+        // Pack gameCards = new Pack(x, nameOfFile);
+        // Card[] packOfCards = gameCards.getPackOfCards();
 
         //Starting player threads
         for (int i = 1; i <= x; i++) {
