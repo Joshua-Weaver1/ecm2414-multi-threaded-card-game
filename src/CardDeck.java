@@ -23,7 +23,19 @@ public class CardDeck {
         this.deckCards[numberOfCards++] = card;
     }
 
-    public void drawCardFromDeck(Card number) {
-        
+    public Card drawCardFromLeft(Card card) {
+        Card topCard = this.deckCards[0];
+        for (int i = 0; i <= 4; i++) {                
+            deckCards[i] = deckCards[i+1];
+        }
+        return topCard;
+    }
+
+    public void addCardToRight(Card card) {
+        if (this.deckCards[3] == null) {
+            this.deckCards[3] = card;
+        } else {
+            this.deckCards[4] = card;
+        }
     }
 }

@@ -1,1 +1,2 @@
-Player created.
+Player 4 created.
+Player 4 is starting with 1 1 2 2

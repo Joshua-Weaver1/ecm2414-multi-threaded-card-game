@@ -30,7 +30,7 @@ public class Player implements Runnable{
             playerOutFile.getParentFile().mkdirs();
             if (!playerOutFile.createNewFile()) {
                 BufferedWriter bwriter = new BufferedWriter(new FileWriter(location));
-                bwriter.write("Player created.");
+                bwriter.write("Player " + this.playerId + " created.");
                 bwriter.close();
             }
         } catch (IOException e) {
@@ -40,5 +40,24 @@ public class Player implements Runnable{
 
     public int getPlayerId(){
         return this.playerId;
+    }
+
+    public void addCardToDeck(Card card) {
+        this.playerCards[numberOfcards++] = card;
+        if (numberOfcards == 4) {
+            playerOutput("Player " + this.playerId + " is starting with " + this.playerCards[0] + " " 
+            + this.playerCards[1] + " " + this.playerCards[2] + " " + this.playerCards[3]);
+        }
+    }
+
+    private void playerOutput(String string) {
+        try {
+            BufferedWriter bWriter = new BufferedWriter(new FileWriter(location, true));
+            bWriter.newLine();
+            bWriter.write(string);
+            bWriter.close();
+        } catch (IOException e) {
+            System.out.println("Error:" + e);
+        }
     }
 }
