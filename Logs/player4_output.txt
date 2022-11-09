@@ -1,2 +1,3 @@
 Player 4 created.
-Player 4 is starting with 1 1 2 2
+Player 4 is starting with 4 4 4 4
+Player 4 is the winner!

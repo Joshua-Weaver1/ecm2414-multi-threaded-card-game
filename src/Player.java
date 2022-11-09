@@ -50,7 +50,7 @@ public class Player implements Runnable{
         }
     }
 
-    private void playerOutput(String string) {
+    public void playerOutput(String string) {
         try {
             BufferedWriter bWriter = new BufferedWriter(new FileWriter(location, true));
             bWriter.newLine();
@@ -59,5 +59,18 @@ public class Player implements Runnable{
         } catch (IOException e) {
             System.out.println("Error:" + e);
         }
+    }
+
+    public boolean startGameCheck() {
+        int cardPos = 0;
+        Card card1 = this.playerCards[0];
+        for(Card temp : this.playerCards) {
+            if(cardPos++ == 4) break;
+            if(temp.getCardNumber() != card1.getCardNumber()) {
+                return false;
+            }
+        }
+        System.out.println("Player " + playerId + " is the winner!");
+        return true;
     }
 }

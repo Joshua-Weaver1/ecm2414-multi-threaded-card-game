@@ -16,6 +16,7 @@ public class CardGame {
         Pack gameCards = new Pack(x, nameOfFile);
         Card[] packOfCards = gameCards.getPackOfCards();
         CardDeck[] decks = new CardDeck[x];
+        boolean hasPlayerWon = false;
 
         //Starting player threads
         for (int i = 1; i <= x; i++) {
@@ -32,6 +33,13 @@ public class CardGame {
         // Give players their cards
         for (int i = 0; i < x*4; i++) {
             players[i % x].addCardToDeck(packOfCards[i]);
+        }
+
+        for (int i = 0; i < x; i++) {
+            if (players[i].startGameCheck()) {
+                hasPlayerWon = true;
+                players[i].playerOutput("Player " + players[i].getPlayerId() + " is the winner!");
+            }
         }
     }
 
