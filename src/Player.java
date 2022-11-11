@@ -2,6 +2,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.*;
 
 /**
  * PLayer Class.
@@ -73,4 +74,24 @@ public class Player implements Runnable{
         System.out.println("Player " + playerId + " is the winner!");
         return true;
     }
+
+    // public Card playerDrawCard(Card drawCardFromLeft, int deckNum, int pickUpDeckNum) {
+    //     boolean pref = true;
+    //     Random rand = new Random();
+    //     Card current;
+    //     short count;
+
+    //     do {
+    //         count = (short) rand.nextInt(4);
+    //         current = this.playerCards[count];
+    //         if (current.getCardNumber() != getPlayerId()) pref= false;
+    //     } while (pref);
+
+    //     deckNum++;
+    //     pickUpDeckNum++;
+    //     this.playerCards[count] = current;
+
+    //     return current;
+
+    // }
 }

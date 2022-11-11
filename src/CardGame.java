@@ -17,6 +17,8 @@ public class CardGame {
         Card[] packOfCards = gameCards.getPackOfCards();
         CardDeck[] decks = new CardDeck[x];
         boolean hasPlayerWon = false;
+        int winner = -1;
+        int round = 0;
 
         //Starting player threads
         for (int i = 1; i <= x; i++) {
@@ -41,6 +43,19 @@ public class CardGame {
                 players[i].playerOutput("Player " + players[i].getPlayerId() + " is the winner!");
             }
         }
+        // while(!hasPlayerWon) {
+        //     int playerDraw = round++ % x;
+        //     int discard = (playerDraw + 1) % x;
+        //     int drawCard = playerDraw;
+
+        //     synchronized (players[playerDraw]) {
+        //         players[playerDraw].playerOutput("Player " + players[playerDraw].getPlayerId() + " is drawing a card.");
+        //         decks[discard].addCardToRight(
+        //             players[playerDraw].playerDrawCard(
+        //                 decks[drawCard].drawCardFromLeft(), decks, drawCard)
+        //         );
+        //     }
+        // }
     }
 
     public static void main(String args[]) {
