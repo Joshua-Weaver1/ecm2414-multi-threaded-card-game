@@ -41,6 +41,9 @@ public class CardGame {
             if (players[i].startGameCheck()) {
                 hasPlayerWon = true;
                 players[i].playerOutput("Player " + players[i].getPlayerId() + " is the winner!");
+                if(hasPlayerWon == true) {
+                    break;
+                }
             }
         }
         // while(!hasPlayerWon) {
@@ -52,8 +55,15 @@ public class CardGame {
         //         players[playerDraw].playerOutput("Player " + players[playerDraw].getPlayerId() + " is drawing a card.");
         //         decks[discard].addCardToRight(
         //             players[playerDraw].playerDrawCard(
-        //                 decks[drawCard].drawCardFromLeft(), decks, drawCard)
+        //                 decks[drawCard].drawCardFromLeft(), discard, drawCard)
         //         );
+        //     }
+        //     if(players[playerDraw].startGameCheck()) {
+        //         hasPlayerWon = true;
+        //         winner = playerDraw;
+        //         if(hasPlayerWon == true) {
+        //             break;
+        //         }
         //     }
         // }
     }

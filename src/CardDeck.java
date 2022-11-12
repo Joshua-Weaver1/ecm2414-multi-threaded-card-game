@@ -23,9 +23,9 @@ public class CardDeck {
         this.deckCards[numberOfCards++] = card;
     }
 
-    public Card drawCardFromLeft(Card card) {
+    public Card drawCardFromLeft() {
         Card topCard = this.deckCards[0];
-        for (int i = 0; i <= 4; i++) {                
+        for (int i = 0; i <= 3; i++) {                
             deckCards[i] = deckCards[i+1];
         }
         return topCard;
