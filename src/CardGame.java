@@ -42,6 +42,9 @@ public class CardGame {
             if (players[i].startGameCheck()) {
                 hasPlayerWon = true;
                 players[i].playerOutput("Player " + players[i].getPlayerId() + " is the winner!");
+                if(hasPlayerWon == true) {
+                    break;
+                }
             }
         }
 
