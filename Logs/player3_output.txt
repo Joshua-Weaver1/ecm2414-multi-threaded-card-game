@@ -1,3 +1,5 @@
 Player 3 created.
 Player 3 is starting with 3 3 3 3
-Player 3 is the winner!
+player -1 has informed player 3 that player -1 has won
+player 3 exits
+player 3 hand 3 3 3 3

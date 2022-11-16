@@ -1,3 +1,5 @@
 Player 2 created.
 Player 2 is starting with 2 2 2 2
-Player 2 is the winner!
+player -1 has informed player 2 that player -1 has won
+player 2 exits
+player 2 hand 2 2 2 2
