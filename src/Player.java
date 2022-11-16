@@ -2,6 +2,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Random;
 
 /**
  * PLayer Class.
@@ -72,5 +73,63 @@ public class Player implements Runnable{
         }
         System.out.println("Player " + playerId + " is the winner!");
         return true;
+    }
+
+    public Card takeTurn(Card pickUp, int discardDeckNumber, int pickUpDeckNumber) {
+        boolean isPreferred = true;
+        Random picker = new Random();
+        Card currentCard;
+        int swapIndex;
+        do {
+            swapIndex = (int) picker.nextInt(4);
+            currentCard = this.playerCards[swapIndex];
+            if (currentCard.getCardNumber() != playerId) isPreferred = false;
+        } while (isPreferred);
+
+        // Increment deck number for text file.
+        pickUpDeckNumber++;
+        discardDeckNumber++;
+
+        this.playerCards[swapIndex] = pickUp; // Add the picked up card to hand.
+
+        playerOutput("Player " + this.getPlayerId() + " draws " + pickUp.getCardNumber() + " from deck " + pickUpDeckNumber);
+        playerOutput("Player " + this.playerId + " discards " + currentCard.getCardNumber() + " to deck " + discardDeckNumber);
+        playerOutput("Player " + this.playerId + " current hand " + this.playerCards[0] + " " 
+        + this.playerCards[1] + " " + this.playerCards[2] + " " + this.playerCards[3]);
+
+        return currentCard;
+    }
+
+    public boolean hasWon() {
+        Card firstCard = this.playerCards[0];
+        int counter = 0;
+        for (Card card :
+                this.playerCards) {
+            if (counter++ == 4) break;
+            if (card.getCardNumber() != firstCard.getCardNumber()) return false;
+        }
+        System.out.printf("Player %d has won%n", playerId);
+        return true;
+    }
+
+    public void informPlayerHasWon(int playerId) {
+        StringBuilder winOutput = new StringBuilder();
+        // check if player number is self
+        if (playerId == this.playerId) {
+            winOutput.append("player ").append(playerId).append(" wins");
+        } else {
+            winOutput.append("player ").append(playerId).append(" has informed player ")
+                    .append(this.playerId).append(" that player ").append(playerId).append(" has won");
+        }
+        playerOutput(winOutput.toString());
+        playerOutput("player " + this.playerId + " exits");
+
+        StringBuilder handOutput = new StringBuilder("player ").append(this.playerId).append(' ');
+        if (playerId == this.playerId) {
+            handOutput.append("final ");
+        }
+        handOutput.append("hand ").append(this.playerCards[0] + " " 
+        + this.playerCards[1] + " " + this.playerCards[2] + " " + this.playerCards[3]);
+        playerOutput(handOutput.toString());
     }
 }

@@ -1,3 +1,8 @@
 Player 3 created.
-Player 3 is starting with 3 3 3 3
-Player 3 is the winner!
+Player 3 is starting with 1 1 2 2
+Player 3 draws 1 from deck 3
+Player 3 discards 2 to deck 4
+Player 3 current hand 1 1 2 1
+player 1 has informed player 3 that player 1 has won
+player 3 exits
+player 3 hand 1 1 2 1

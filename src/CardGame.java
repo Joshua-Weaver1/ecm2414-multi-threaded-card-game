@@ -12,11 +12,14 @@ import java.io.InputStreamReader;
 public class CardGame {
 
     public static void startSimulation(String nameOfFile, int x) throws IOException {
+        //Variables
         Player[] players = new Player[x];
         Pack gameCards = new Pack(x, nameOfFile);
         Card[] packOfCards = gameCards.getPackOfCards();
         CardDeck[] decks = new CardDeck[x];
         boolean hasPlayerWon = false;
+        int winner = -1;
+        int turns = 0;
 
         //Starting player threads
         for (int i = 1; i <= x; i++) {
@@ -39,6 +42,29 @@ public class CardGame {
             if (players[i].startGameCheck()) {
                 hasPlayerWon = true;
                 players[i].playerOutput("Player " + players[i].getPlayerId() + " is the winner!");
+            }
+        }
+
+        while (!hasPlayerWon) {
+            int playersTurn = turns++ % x;
+            int discardToDeck = (playersTurn + 1) % x;
+            int pickUpFromDeck = playersTurn;
+
+            synchronized (players[playersTurn]) {
+                decks[discardToDeck].addCardToRight(players[playersTurn].takeTurn(decks[pickUpFromDeck].drawCardFromLeft(), discardToDeck, pickUpFromDeck)
+                );
+            }
+
+            // checks if player has won at the end of every turn
+            if (players[playersTurn].hasWon()) {
+                hasPlayerWon = true;
+                winner = players[playersTurn].getPlayerId();
+            }
+        }
+
+        for (short i = 0; i < x; i++) {
+            synchronized (players[i]) {
+                players[i].informPlayerHasWon(winner);
             }
         }
     }
