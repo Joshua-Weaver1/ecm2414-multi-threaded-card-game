@@ -1,22 +1,5 @@
 Player 2 created.
-Player 2 is starting with 2 3 4 1
-Player 2 is drawing a card.
-Player 2 has drawn 2 from deck 3
-Player 2 discards 1 from deck 3
-Player 2 current hand: 
-2 3 4 2
-Player 2 is drawing a card.
-Player 2 has drawn 3 from deck 3
-Player 2 discards 4 from deck 3
-Player 2 current hand: 
-2 3 3 2
-Player 2 is drawing a card.
-Player 2 has drawn 4 from deck 3
-Player 2 discards 3 from deck 3
-Player 2 current hand: 
-2 4 3 2
-Player 2 is drawing a card.
-Player 2 has drawn 1 from deck 3
-Player 2 discards 3 from deck 3
-Player 2 current hand: 
-2 4 1 2
+Player 2 is starting with 2 2 2 2
+player -1 has informed player 2 that player -1 has won
+player 2 exits
+player 2 hand: 2 2 2 2

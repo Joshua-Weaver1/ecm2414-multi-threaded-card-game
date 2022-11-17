@@ -2,7 +2,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.*;
+import java.util.Random;
 
 /**
  * PLayer Class.
@@ -43,7 +43,7 @@ public class Player implements Runnable{
         return this.playerId;
     }
 
-    public void addCardToDeck(Card card) {
+    public void addCardToPlayerDeck(Card card) {
         this.playerCards[numberOfcards++] = card;
         if (numberOfcards == 4) {
             playerOutput("Player " + this.playerId + " is starting with " + this.playerCards[0] + " " 
@@ -79,27 +79,61 @@ public class Player implements Runnable{
         return true;
     }
 
-    public Card playerDrawCard(Card drawCardFromLeft, int deckNum, int pickUpDeckNum) {
-        boolean pref = true;
-        Random rand = new Random();
-        Card current;
-        short count;
-
+    public Card takeTurn(Card pickUp, int discardDeckNumber, int pickUpDeckNumber) {
+        boolean isPreferred = true;
+        Random picker = new Random();
+        Card currentCard;
+        int swapIndex;
         do {
-            count = (short) rand.nextInt(4);
-            current = this.playerCards[count];
-            if (current.getCardNumber() != getPlayerId()) pref= false;
-        } while (pref);
+            swapIndex = (int) picker.nextInt(4);
+            currentCard = this.playerCards[swapIndex];
+            if (currentCard.getCardNumber() != playerId) isPreferred = false;
+        } while (isPreferred);
 
-        deckNum++;
-        pickUpDeckNum++;
-        this.playerCards[count] = drawCardFromLeft;
+        // Increment deck number for text file.
+        pickUpDeckNumber++;
+        discardDeckNumber++;
 
-        playerOutput("Player " + this.getPlayerId() + " has drawn " + drawCardFromLeft.getCardNumber() + " from deck " + deckNum);
-        playerOutput("Player " + this.getPlayerId() + " discards " + current.getCardNumber() + " from deck " + deckNum);
-        playerOutput("Player " + this.getPlayerId() + " current hand: " + "\n" + handStringRepr());
+        this.playerCards[swapIndex] = pickUp; // Add the picked up card to hand.
 
-        return current;
+        playerOutput("Player " + this.getPlayerId() + " draws " + pickUp.getCardNumber() + " from deck " + pickUpDeckNumber);
+        playerOutput("Player " + this.playerId + " discards " + currentCard.getCardNumber() + " to deck " + discardDeckNumber);
+        playerOutput("Player " + this.playerId + " current hand " + this.playerCards[0] + " " 
+        + this.playerCards[1] + " " + this.playerCards[2] + " " + this.playerCards[3]);
 
+        return currentCard;
+    }
+
+    public boolean hasWon() {
+        Card firstCard = this.playerCards[0];
+        int counter = 0;
+        for (Card card :
+                this.playerCards) {
+            if (counter++ == 4) break;
+            if (card.getCardNumber() != firstCard.getCardNumber()) return false;
+        }
+        System.out.printf("Player %d has won%n", playerId);
+        return true;
+    }
+
+    public void informPlayerHasWon(int playerId) {
+        StringBuilder winOutput = new StringBuilder();
+        // check if player number is self
+        if (playerId == this.playerId) {
+            winOutput.append("player ").append(playerId).append(" wins");
+        } else {
+            winOutput.append("player ").append(playerId).append(" has informed player ")
+                    .append(this.playerId).append(" that player ").append(playerId).append(" has won");
+        }
+        playerOutput(winOutput.toString());
+        playerOutput("player " + this.playerId + " exits");
+
+        StringBuilder handOutput = new StringBuilder("player ").append(this.playerId).append(' ');
+        if (playerId == this.playerId) {
+            handOutput.append("final ");
+        }
+        handOutput.append("hand: ").append(this.playerCards[0] + " " 
+        + this.playerCards[1] + " " + this.playerCards[2] + " " + this.playerCards[3]);
+        playerOutput(handOutput.toString());
     }
 }
