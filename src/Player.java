@@ -51,6 +51,10 @@ public class Player implements Runnable{
         }
     }
 
+    private String handStringRepr() {
+        return this.playerCards[0] + " " + this.playerCards[1] + " " + this.playerCards[2] + " " + this.playerCards[3];
+    }
+
     public void playerOutput(String string) {
         try {
             BufferedWriter bWriter = new BufferedWriter(new FileWriter(location, true));
@@ -89,7 +93,11 @@ public class Player implements Runnable{
 
         deckNum++;
         pickUpDeckNum++;
-        this.playerCards[count] = current;
+        this.playerCards[count] = drawCardFromLeft;
+
+        playerOutput("Player " + this.getPlayerId() + " has drawn " + drawCardFromLeft.getCardNumber() + " from deck " + deckNum);
+        playerOutput("Player " + this.getPlayerId() + " discards " + current.getCardNumber() + " from deck " + deckNum);
+        playerOutput("Player " + this.getPlayerId() + " current hand: " + "\n" + handStringRepr());
 
         return current;
 

@@ -1,2 +1,22 @@
 Player 4 created.
 Player 4 is starting with 4 1 3 4
+Player 4 is drawing a card.
+Player 4 has drawn 4 from deck 1
+Player 4 discards 1 from deck 1
+Player 4 current hand: 
+4 4 3 4
+Player 4 is drawing a card.
+Player 4 has drawn 1 from deck 1
+Player 4 discards 3 from deck 1
+Player 4 current hand: 
+4 4 1 4
+Player 4 is drawing a card.
+Player 4 has drawn 3 from deck 1
+Player 4 discards 1 from deck 1
+Player 4 current hand: 
+4 4 3 4
+Player 4 is drawing a card.
+Player 4 has drawn 4 from deck 1
+Player 4 discards 3 from deck 1
+Player 4 current hand: 
+4 4 4 4

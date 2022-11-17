@@ -46,26 +46,26 @@ public class CardGame {
                 }
             }
         }
-        // while(!hasPlayerWon) {
-        //     int playerDraw = round++ % x;
-        //     int discard = (playerDraw + 1) % x;
-        //     int drawCard = playerDraw;
+        while(!hasPlayerWon) {
+            int playerDraw = round++ % x;
+            int discard = (playerDraw + 1) % x;
+            int drawCard = playerDraw;
 
-        //     synchronized (players[playerDraw]) {
-        //         players[playerDraw].playerOutput("Player " + players[playerDraw].getPlayerId() + " is drawing a card.");
-        //         decks[discard].addCardToRight(
-        //             players[playerDraw].playerDrawCard(
-        //                 decks[drawCard].drawCardFromLeft(), discard, drawCard)
-        //         );
-        //     }
-        //     if(players[playerDraw].startGameCheck()) {
-        //         hasPlayerWon = true;
-        //         winner = playerDraw;
-        //         if(hasPlayerWon == true) {
-        //             break;
-        //         }
-        //     }
-        // }
+            synchronized (players[playerDraw]) {
+                players[playerDraw].playerOutput("Player " + players[playerDraw].getPlayerId() + " is drawing a card.");
+                decks[discard].addCardToRight(
+                    players[playerDraw].playerDrawCard(
+                        decks[drawCard].drawCardFromLeft(), discard, drawCard)
+                );
+            }
+            if(players[playerDraw].startGameCheck()) {
+                hasPlayerWon = true;
+                winner = playerDraw;
+                if(hasPlayerWon == true) {
+                    break;
+                }
+            }
+        }
     }
 
     public static void main(String args[]) {
@@ -81,7 +81,6 @@ public class CardGame {
             System.out.println("The name of the file you have selected is: " + nameOfFile);
 
             startSimulation(nameOfFile, x);
-
 
         } catch (IOException e) {
             System.out.println("Error: " + e);
