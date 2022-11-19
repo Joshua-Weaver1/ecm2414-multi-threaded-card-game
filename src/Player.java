@@ -51,10 +51,6 @@ public class Player implements Runnable{
         }
     }
 
-    private String handStringRepr() {
-        return this.playerCards[0] + " " + this.playerCards[1] + " " + this.playerCards[2] + " " + this.playerCards[3];
-    }
-
     public void playerOutput(String string) {
         try {
             BufferedWriter bWriter = new BufferedWriter(new FileWriter(location, true));
@@ -75,36 +71,39 @@ public class Player implements Runnable{
                 return false;
             }
         }
-        System.out.println("Player " + playerId + " is the winner!");
+        System.out.println("Player " + playerId + " is the winner straight away!");
         return true;
     }
 
-    public Card takeTurn(Card pickUp, int discardDeckNumber, int pickUpDeckNumber) {
-        boolean isPreferred = true;
-        Random picker = new Random();
-        Card currentCard;
-        int swapIndex;
-        do {
-            swapIndex = (int) picker.nextInt(4);
-            currentCard = this.playerCards[swapIndex];
-            if (currentCard.getCardNumber() != playerId) isPreferred = false;
-        } while (isPreferred);
+    public Card makeMove(Card cardSelected, int rightDeck, int leftDeck) {
+        Random randomChoice = new Random();
+        boolean wantedCard = true;
+        Card currentCard = new Card(1);
+        int positionOfCardToSwitch = 0;
 
-        // Increment deck number for text file.
-        pickUpDeckNumber++;
-        discardDeckNumber++;
+        while (wantedCard == true) {
+            positionOfCardToSwitch = (int) randomChoice.nextInt(4);
+            currentCard = this.playerCards[positionOfCardToSwitch];
+            if (currentCard.getCardNumber() != playerId) {
+                wantedCard = false;
+            }
+        }
 
-        this.playerCards[swapIndex] = pickUp; // Add the picked up card to hand.
+        // Increase deck number
+        leftDeck++;
+        rightDeck++;
 
-        playerOutput("Player " + this.getPlayerId() + " draws " + pickUp.getCardNumber() + " from deck " + pickUpDeckNumber);
-        playerOutput("Player " + this.playerId + " discards " + currentCard.getCardNumber() + " to deck " + discardDeckNumber);
+        this.playerCards[positionOfCardToSwitch] = cardSelected;
+
+        playerOutput("Player " + this.getPlayerId() + " draws " + cardSelected.getCardNumber() + " from deck " + leftDeck);
+        playerOutput("Player " + this.playerId + " discards " + currentCard.getCardNumber() + " to deck " + rightDeck);
         playerOutput("Player " + this.playerId + " current hand " + this.playerCards[0] + " " 
         + this.playerCards[1] + " " + this.playerCards[2] + " " + this.playerCards[3]);
 
         return currentCard;
     }
 
-    public boolean hasWon() {
+    public boolean winnerCheck() {
         Card firstCard = this.playerCards[0];
         int counter = 0;
         for (Card card :
@@ -112,28 +111,26 @@ public class Player implements Runnable{
             if (counter++ == 4) break;
             if (card.getCardNumber() != firstCard.getCardNumber()) return false;
         }
-        System.out.printf("Player %d has won%n", playerId);
+        System.out.println("Player " + this.getPlayerId() + " is the winner of the game!");
         return true;
     }
 
-    public void informPlayerHasWon(int playerId) {
-        StringBuilder winOutput = new StringBuilder();
-        // check if player number is self
+    public void announceWinner(int playerId) {
+        StringBuilder sBuilder = new StringBuilder();
         if (playerId == this.playerId) {
-            winOutput.append("player ").append(playerId).append(" wins");
+            sBuilder.append("Player ").append(playerId).append(" has won the game!");
         } else {
-            winOutput.append("player ").append(playerId).append(" has informed player ")
-                    .append(this.playerId).append(" that player ").append(playerId).append(" has won");
+            sBuilder.append("Player ").append(playerId).append(" has told player ")
+                    .append(this.playerId).append(" that player ").append(playerId).append(" is the winner.");
         }
-        playerOutput(winOutput.toString());
-        playerOutput("player " + this.playerId + " exits");
+        playerOutput(sBuilder.toString());
+        playerOutput("Player " + this.playerId + " stops playing");
 
-        StringBuilder handOutput = new StringBuilder("player ").append(this.playerId).append(' ');
+        StringBuilder showCards = new StringBuilder("Player ").append(this.playerId).append(' ');
         if (playerId == this.playerId) {
-            handOutput.append("final ");
+            showCards.append("winning ");
         }
-        handOutput.append("hand: ").append(this.playerCards[0] + " " 
-        + this.playerCards[1] + " " + this.playerCards[2] + " " + this.playerCards[3]);
-        playerOutput(handOutput.toString());
+        showCards.append("cards: ").append(this.playerCards[0] + " " + this.playerCards[1] + " " + this.playerCards[2] + " " + this.playerCards[3]);
+        playerOutput(showCards.toString());
     }
 }
