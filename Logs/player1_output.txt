@@ -3,4 +3,4 @@ Player 1 is starting with 1 1 1 1
 Player 1 is the winner!
 player -1 has informed player 1 that player -1 has won
 player 1 exits
-player 1 hand 1 1 1 1
+player 1 hand: 1 1 1 1

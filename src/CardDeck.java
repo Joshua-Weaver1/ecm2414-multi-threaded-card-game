@@ -19,6 +19,10 @@ public class CardDeck {
         return this.deckId;
     }
 
+    public int getDeckSize() {
+        return this.numberOfCards;
+    }
+
     public void addToDeck(Card card) {
         this.deckCards[numberOfCards++] = card;
     }
