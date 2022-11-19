@@ -18,9 +18,9 @@ public class CardTest {
         assertEquals(this.testCard.getCardNumber(), testCardValue);
     }
 
-
     @Test
     public void test() {
         assertEquals("Hello!", "Hello!");
     }
+    
 }

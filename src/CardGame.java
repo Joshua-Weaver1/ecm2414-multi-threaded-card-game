@@ -35,7 +35,7 @@ public class CardGame {
 
         // Give players their cards
         for (int i = 0; i < x*4; i++) {
-            players[i % x].addCardToDeck(packOfCards[i]);
+            players[i % x].addCardToPlayerDeck(packOfCards[i]);
         }
 
         for (int i = 0; i < x; i++) {
