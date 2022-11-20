@@ -18,8 +18,8 @@ public class CardGame {
         Card[] packOfCards = gameCards.getPackOfCards();
         CardDeck[] decks = new CardDeck[x];
         boolean hasPlayerWon = false;
-        int winner = -1;
-        int turns = 0;
+        int victor = -1;
+        int attempts = 0;
 
         //Starting player threads
         for (int i = 1; i <= x; i++) {
@@ -49,25 +49,25 @@ public class CardGame {
         }
 
         while (!hasPlayerWon) {
-            int playersTurn = turns++ % x;
-            int discardToDeck = (playersTurn + 1) % x;
-            int pickUpFromDeck = playersTurn;
+            int memberAttempts = attempts++ % x;
+            int leftDeck = memberAttempts;
+            int rightDeck = (memberAttempts + 1) % x;
 
-            synchronized (players[playersTurn]) {
-                decks[discardToDeck].addCardToRight(players[playersTurn].takeTurn(decks[pickUpFromDeck].drawCardFromLeft(), discardToDeck, pickUpFromDeck)
+            synchronized (players[memberAttempts]) {
+                decks[rightDeck].addCardToRight(players[memberAttempts].makeMove(decks[leftDeck].drawCardFromLeft(), rightDeck, leftDeck)
                 );
             }
 
             // checks if player has won at the end of every turn
-            if (players[playersTurn].hasWon()) {
+            if (players[memberAttempts].winnerCheck()) {
                 hasPlayerWon = true;
-                winner = players[playersTurn].getPlayerId();
+                victor = players[memberAttempts].getPlayerId();
             }
         }
 
-        for (short i = 0; i < x; i++) {
+        for (int i = 0; i < x; i++) {
             synchronized (players[i]) {
-                players[i].informPlayerHasWon(winner);
+                players[i].announceWinner(victor);
             }
         }
     }
