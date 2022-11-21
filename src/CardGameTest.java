@@ -16,20 +16,20 @@ public class CardGameTest {
             int x = (int) Math.round(Math.random() * 100)+1;
             String nameOfFile = "pack.txt";
             File playerOutput = new File(nameOfFile);
-            BufferedWriter writer;
+            BufferedWriter output;
             if (!playerOutput.createNewFile()) {
-                writer = new BufferedWriter(new FileWriter(nameOfFile));
-                writer.write("");        
-                writer.close();
+                output = new BufferedWriter(new FileWriter(nameOfFile));
+                output.write("");        
+                output.close();
             }
-            writer = new BufferedWriter(new FileWriter(nameOfFile, true));
+            output = new BufferedWriter(new FileWriter(nameOfFile, true));
             for (int i = 1; i <= x; i++) {
                 for (int j = 0; j < 8; j++) {
-                    writer.write(i + "");
-                    writer.newLine();
+                    output.write(i + "");
+                    output.newLine();
                 }
             }
-            writer.close();
+            output.close();
             try {
                 // runs the game with the newly created pack file
                 CardGame.startSimulation(nameOfFile, x);

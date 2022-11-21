@@ -5,9 +5,10 @@ import java.io.IOException;
 import java.util.Random;
 
 /**
- * PLayer Class.
+ * This is the executable CardGame class.
  * 
  * @author Kevin Liu & Joshua Weaver
+ * @version 1.0
  */
 public class Player implements Runnable{
 
@@ -16,11 +17,22 @@ public class Player implements Runnable{
     private final Card[] playerCards;
     private final String location;
 
+    /**
+     * This is a method that notifies the user that the threading has started and
+     * 
+     * @version 1.0
+     */
     @Override
     public void run() {
         System.out.println("Thread of player " + this.playerId + " has started.");
     }
 
+    /**
+     * This is the constructor for a player and also creates a log for 
+     * the players actions within the game.
+     * 
+     * @param playerId The id of the player.
+     */
     public Player(int playerId) {
         this.playerId = playerId;
         this.playerCards = new Card[5];
@@ -39,10 +51,23 @@ public class Player implements Runnable{
         }
     }
 
+    /**
+     * This is the getter for the player id.
+     * 
+     * @return The player id.
+     * @version 1.0
+     */
     public int getPlayerId(){
         return this.playerId;
     }
 
+    /**
+     * This is the getter for the player cards and it outputs a string representation
+     * of the player's cards.
+     * 
+     * @return The player cards.
+     * @version 1.0
+     */
     public void addCardToPlayerDeck(Card card) {
         this.playerCards[numberOfcards++] = card;
         if (numberOfcards == 4) {
@@ -51,6 +76,12 @@ public class Player implements Runnable{
         }
     }
 
+    /**
+     * This is the method that outputs a string to the player's log file.
+     * 
+     * @param string The string to be outputted.
+     * @version 1.0
+     */
     public void playerOutput(String string) {
         try {
             BufferedWriter bWriter = new BufferedWriter(new FileWriter(location, true));
@@ -62,6 +93,13 @@ public class Player implements Runnable{
         }
     }
 
+    /**
+     * This is the method that checks the players' cards before players start drawing cards
+     * to see if a player has pulled 4 cards of the same number.
+     * 
+     * @return True if a player has 4 cards of the same number.
+     * @version 1.0
+     */
     public boolean startGameCheck() {
         int cardPos = 0;
         Card card1 = this.playerCards[0];
@@ -75,6 +113,16 @@ public class Player implements Runnable{
         return true;
     }
 
+    /**
+     * This is the method that controls the actions of the player when it is their turn
+     * to draw a card.
+     * 
+     * @param cardSelected The card that the player has selected.
+     * @param rightDeck The deck to the right of the player.
+     * @param leftDeck  The deck to the left of the player.
+     * @return currentCard The card that the player has drawn.
+     * @version 1.0
+     */
     public Card makeMove(Card cardSelected, int rightDeck, int leftDeck) {
         Random randomChoice = new Random();
         boolean wantedCard = true;
@@ -103,6 +151,12 @@ public class Player implements Runnable{
         return currentCard;
     }
 
+    /**
+     * This is the method that checks if a player has won
+     * 
+     * @return True if a player has won.
+     * @version 1.0
+     */
     public boolean winnerCheck() {
         Card firstCard = this.playerCards[0];
         int counter = 0;
@@ -115,6 +169,13 @@ public class Player implements Runnable{
         return true;
     }
 
+    /**
+     * This is the method that announces to the other players that a player has won the game
+     * by collecting 4 cards of the same number.
+     * 
+     * @param playerId The id of the player
+     * @version 1.0
+     */
     public void announceWinner(int playerId) {
         StringBuilder sBuilder = new StringBuilder();
         if (playerId == this.playerId) {
@@ -132,5 +193,9 @@ public class Player implements Runnable{
         }
         showCards.append("cards: ").append(this.playerCards[0] + " " + this.playerCards[1] + " " + this.playerCards[2] + " " + this.playerCards[3]);
         playerOutput(showCards.toString());
+    }
+
+    public Card[] getCards() {
+        return playerCards;
     }
 }

@@ -1,7 +1,7 @@
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class CardTest {
     Card testCard;
@@ -19,8 +19,7 @@ public class CardTest {
     }
 
     @Test
-    public void test() {
-        assertEquals("Hello!", "Hello!");
+    public void toStringTest() {
+        assertEquals(this.testCard.toString(), "" + testCardValue);
     }
-    
 }

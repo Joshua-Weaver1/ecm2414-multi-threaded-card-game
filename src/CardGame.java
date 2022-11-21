@@ -8,11 +8,18 @@ import java.io.InputStreamReader;
  * @author Kevin Liu & Joshua Weaver
  * @version 1.0
  */
-
 public class CardGame {
 
+    /**
+     * This is method starts the simulaition for the card game.
+     * 
+     * @param nameOfFile The name of the file.
+     * @param x The number of players.
+     * @throws IOException The exception for the file.
+     * @version 1.0
+     */
     public static void startSimulation(String nameOfFile, int x) throws IOException {
-        //Variables
+        // Variables
         Player[] players = new Player[x];
         Pack gameCards = new Pack(x, nameOfFile);
         Card[] packOfCards = gameCards.getPackOfCards();
@@ -21,7 +28,7 @@ public class CardGame {
         int victor = -1;
         int attempts = 0;
 
-        //Starting player threads
+        // Starting player threads
         for (int i = 1; i <= x; i++) {
             players[i - 1] = new Player(i);
             players[i - 1].run();
@@ -29,12 +36,12 @@ public class CardGame {
         }
 
         // Give deck their cards
-        for (int i = 0; i < x*4; i++) {
+        for (int i = 0; i < x * 4; i++) {
             decks[i % x].addToDeck(packOfCards[i]);
         }
 
         // Give players their cards
-        for (int i = 0; i < x*4; i++) {
+        for (int i = 0; i < x * 4; i++) {
             players[i % x].addCardToPlayerDeck(packOfCards[i]);
         }
 
@@ -42,7 +49,7 @@ public class CardGame {
             if (players[i].startGameCheck()) {
                 hasPlayerWon = true;
                 players[i].playerOutput("Player " + players[i].getPlayerId() + " is the winner!");
-                if(hasPlayerWon == true) {
+                if (hasPlayerWon == true) {
                     break;
                 }
             }
@@ -54,8 +61,8 @@ public class CardGame {
             int rightDeck = (memberAttempts + 1) % x;
 
             synchronized (players[memberAttempts]) {
-                decks[rightDeck].addCardToRight(players[memberAttempts].makeMove(decks[leftDeck].drawCardFromLeft(), rightDeck, leftDeck)
-                );
+                decks[rightDeck].addCardToRight(
+                        players[memberAttempts].makeMove(decks[leftDeck].drawCardFromLeft(), rightDeck, leftDeck));
             }
 
             // checks if player has won at the end of every turn
@@ -72,6 +79,12 @@ public class CardGame {
         }
     }
 
+    /**
+     * This is the main method for the game.
+     * 
+     * @param args The arguments for the game.
+     * @version 1.0
+     */
     public static void main(String args[]) {
 
         try {
