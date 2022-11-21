@@ -9,6 +9,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
+//This is a test class
 public class PackTest {
     Pack testPack;
     int testPackSize;
