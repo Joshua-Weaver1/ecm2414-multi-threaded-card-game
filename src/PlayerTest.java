@@ -1,5 +1,5 @@
 import static org.junit.Assert.assertEquals;
-import static.org,junit.AssertArray.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
+import java.lang.reflect.Field;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -19,12 +20,14 @@ public class PlayerTest {
     int testPlayerId;
     String testPlayerLocation;
     short cardNumber;
-    Card[] exp = new Card[5];
     Card card;
+    Card[] exp = new Card[5];
+    Random rand = new Random();
 
     @Before
     public void initialise() {
-        this.testPlayerId = (int) Math.round(Math.random() * 100);
+        
+        this.testPlayerId = (short) Math.round(Math.random() * 100);
         this.testPlayerLocation = "Logs" + File.separator + "player" + this.testPlayerId + "_output.txt";
         this.testPlayer = new Player(this.testPlayerId);
     }
@@ -35,13 +38,10 @@ public class PlayerTest {
     }
 
     @Test
-    public void addCardToPlayerDeckTest() {
-        Random rand = new Random();
-        Card testCard = new Card(cardNumber);
-        cardNumber = (short) rand.nextInt(100);
-
-        this.testPlayer.addCardToPlayerDeck(testCard);
-        assertEquals(cardNumber, 5);
+    public void addCardToPlayerDeck() {
+        card = new Card(testPlayer.getPlayerId());
+        this.testPlayer.addCardToPlayerDeck(card);
+        assertEquals( 1,this.testPlayer.getNumberOfCards());
     }
 
     @Test
@@ -82,11 +82,13 @@ public class PlayerTest {
         File playerOutput = new File(this.testPlayerLocation);
         try {
             BufferedReader bReader = new BufferedReader(new FileReader(playerOutput));
+
             String line1 = bReader.readLine();
             String line2 = bReader.readLine();
             String line3 = bReader.readLine();
             String line4 = bReader.readLine();
             String line5 = bReader.readLine();
+
             assertEquals("Player " + this.testPlayerId + " created.", line1);
             assertEquals("Player " + this.testPlayerId + " is starting with 1 1 1 1", line2);
             assertEquals("Player 5 has told player " + this.testPlayerId + " that player 5 is the winner.", line3);
@@ -97,6 +99,43 @@ public class PlayerTest {
         catch (IOException e) {
             System.out.println("Error reading file");
         }
+    }
+    @Test
+    public void makeMoveTest() {
+        Card takeCard = new Card((short) rand.nextInt(100)), card2, card4;
+
+        do{
+            card2 = new Card((short) rand.nextInt(100));
+        }while(card2.equals(takeCard));
+
+        do{
+            card4 = new Card((short) rand.nextInt(100));
+        }
+        while(card4.equals(takeCard) || card4.equals(card2));
+
+        if (card2 != card4) {
+            testPlayer.addCardToPlayerDeck(new Card(testPlayer.getPlayerId()));
+            testPlayer.addCardToPlayerDeck(card2);
+            testPlayer.addCardToPlayerDeck(new Card(testPlayer.getPlayerId()));
+            testPlayer.addCardToPlayerDeck(card4);
+
+            int useless = rand.nextInt(100);
+            int useful = rand.nextInt(100);
+            Card uselessCard = this.testPlayer.makeMove(takeCard, useless, useful);
+
+            assertNotEquals(this.testPlayer.getPlayerId(), uselessCard.getCardNumber());
+        }
+
+        try {
+            Field getPlayerCards = Player.class.getDeclaredField("hand");
+            getPlayerCards.setAccessible(true);
+            Card[] correctHand = (Card[]) getPlayerCards.get(testPlayer);
+
+            assertTrue(correctHand[1] == takeCard || correctHand[3] == takeCard);
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        } 
     }
 }
 

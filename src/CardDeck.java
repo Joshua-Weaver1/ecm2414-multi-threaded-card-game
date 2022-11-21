@@ -31,7 +31,7 @@ public class CardDeck {
         return this.deckId;
     }
 
-    public static int getDeckSize() {
+    public int getDeckSize() {
         return this.numberOfCards;
     }
 
