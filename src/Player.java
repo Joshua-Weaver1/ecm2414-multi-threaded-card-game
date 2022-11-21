@@ -62,6 +62,25 @@ public class Player implements Runnable{
     }
 
     /**
+     * This is the getter for the number of cards.
+     * 
+     * @return The number of cards.
+     * @version 1.0
+     */
+    public int getNumberOfCards() {
+        return this.numberOfcards;
+    }
+
+    /**
+     * This is the getter for the player cards.
+     * 
+     * @return The player cards.
+     * @version 1.0
+     */
+    public Card[] getCards() {
+        return playerCards;
+    }
+    /**
      * This is the getter for the player cards and it outputs a string representation
      * of the player's cards.
      * 
@@ -193,9 +212,5 @@ public class Player implements Runnable{
         }
         showCards.append("cards: ").append(this.playerCards[0] + " " + this.playerCards[1] + " " + this.playerCards[2] + " " + this.playerCards[3]);
         playerOutput(showCards.toString());
-    }
-
-    public Card[] getCards() {
-        return playerCards;
     }
 }
