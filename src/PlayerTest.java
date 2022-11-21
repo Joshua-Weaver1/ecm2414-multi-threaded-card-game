@@ -32,6 +32,19 @@ public class PlayerTest {
         this.testPlayer = new Player(this.testPlayerId);
     }
 
+    public static boolean allEqual() {
+        Card[] cards = new Card[5];
+        if (cards == null || cards.length == 0){
+            return false;
+        }
+        for (int i = 0; i < cards.length; i++) {
+            if(cards[0] != cards[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     @Test
     public void getPlayerIdTest() {
         assertEquals("Incorrect player id", this.testPlayerId, this.testPlayer.getPlayerId());
@@ -64,13 +77,17 @@ public class PlayerTest {
             assertTrue(this.testPlayer.winnerCheck());
     }
 
+    
+
     @Test
     public void winnerCheckFalseTest() {
-
         for (int i = 0; i < 4; i++) {
             testPlayer.addCardToPlayerDeck(new Card((short) 1));
-        }
+        }   
+        if (allEqual() == false) {
             assertFalse(this.testPlayer.winnerCheck());
+        }
+
     }
 
     @Test
