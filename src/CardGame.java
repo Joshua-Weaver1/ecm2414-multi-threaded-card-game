@@ -45,6 +45,8 @@ public class CardGame {
             players[i % x].addCardToPlayerDeck(packOfCards[i]);
         }
 
+        // Checks the player's cards to see if they have been given
+        // a winning hand
         for (int i = 0; i < x; i++) {
             if (players[i].startGameCheck()) {
                 hasPlayerWon = true;
@@ -55,6 +57,7 @@ public class CardGame {
             }
         }
 
+        // If no player has won, the game continues
         while (!hasPlayerWon) {
             int memberAttempts = attempts++ % x;
             int leftDeck = memberAttempts;
@@ -72,6 +75,7 @@ public class CardGame {
             }
         }
 
+        // Announces the winner
         for (int i = 0; i < x; i++) {
             synchronized (players[i]) {
                 players[i].announceWinner(victor);
@@ -86,7 +90,7 @@ public class CardGame {
      * @version 1.0
      */
     public static void main(String args[]) {
-
+        
         try {
             BufferedReader bReader = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Enter the number of desired players here: ");
