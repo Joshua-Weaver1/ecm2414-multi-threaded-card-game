@@ -44,11 +44,16 @@ public class CardDeckTest {
   // Tests if a card is added to the right deck
   @Test
   public void addCardToRightTest() {
-    deck.addToDeck(card);
-    deck.drawCardFromLeft();
-    Card card2 = new Card(2);
-    deck.addCardToRight(card2);
+    int currentSize = deck.getDeckSize();
+    assertTrue(currentSize == 0);
 
-    assertEquals("Card was not added to deck", 1, deck.getDeckSize());
-  }
+    deck.addToDeck(card);
+    assertTrue(deck.getDeckSize() == 1);
+
+    deck.drawCardFromLeft();
+    assertTrue(currentSize == 0);
+
+    deck.addCardToRight(card);
+    assertTrue(deck.getDeckSize() == 1);
+    }
 }
