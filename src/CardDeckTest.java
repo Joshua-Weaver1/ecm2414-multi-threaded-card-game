@@ -33,10 +33,12 @@ public class CardDeckTest {
   @Test
   public void drawCardFromLeftTest() {
     deck.addToDeck(card);
+    int cardNumber = card.getCardNumber();
     Card drawnCard = deck.drawCardFromLeft();
+    int drawnCardNumber = drawnCard.getCardNumber();
 
     assertTrue(deck.getDeckSize() == 1);
-    assertEquals("Incorrect card was drawn", card, drawnCard);
+    assertEquals("Incorrect card was drawn", drawnCardNumber, cardNumber);
   }
 
   // Tests if a card is added to the right deck
