@@ -34,7 +34,9 @@ public class CardDeckTest {
   public void drawCardFromLeftTest() {
     int cardNumber = card.getCardNumber();
     deck.addToDeck(card);
+    int cardNumber = card.getCardNumber();
     Card drawnCard = deck.drawCardFromLeft();
+    int drawnCardNumber = drawnCard.getCardNumber();
     int drawnCardNumber = drawnCard.getCardNumber();
 
     assertTrue(deck.getDeckSize() == 1);
