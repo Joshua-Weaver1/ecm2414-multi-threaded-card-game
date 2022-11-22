@@ -80,6 +80,7 @@ public class CardGame {
       synchronized (players[i]) {
         players[i].announceWinner(victor);
       }
+      decks[i].writeContentsToFile();
     }
   }
 

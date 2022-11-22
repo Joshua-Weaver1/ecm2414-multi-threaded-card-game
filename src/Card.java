@@ -9,15 +9,6 @@ public class Card {
   private final int cardNumber;
 
   /**
-  * This is the constructor for a card.
-  * 
-  * @param cardNumber The number of the card.
-  */
-  public Card(int cardNumber) {
-    this.cardNumber = cardNumber;
-  }
-
-  /**
   * This returns the card number.
   * 
   * @return The card number.
@@ -34,5 +25,14 @@ public class Card {
   @Override
   public String toString() {
     return "" + cardNumber;
+  }
+
+  /**
+  * This is the constructor for a card.
+  * 
+  * @param cardNumber The number of the card.
+  */
+  public Card(int cardNumber) {
+    this.cardNumber = cardNumber;
   }
 }

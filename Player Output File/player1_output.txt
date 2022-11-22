@@ -1,0 +1,6 @@
+Player 1 created.
+Player 1 is starting with 1 1 1 1
+Player 1 is the winner!
+Player -1 has told player 1 that player -1 is the winner.
+Player 1 stops playing
+Player 1 cards: 1 1 1 1

@@ -1,0 +1,5 @@
+Player 3 created.
+Player 3 is starting with 3 3 3 3
+Player -1 has told player 3 that player -1 is the winner.
+Player 3 stops playing
+Player 3 cards: 3 3 3 3

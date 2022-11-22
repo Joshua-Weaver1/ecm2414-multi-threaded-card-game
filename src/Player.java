@@ -37,7 +37,8 @@ public class Player implements Runnable {
     this.playerId = playerId;
     this.playerCards = new Card[5];
     this.numberOfcards = 0;
-    this.location = "Logs" + File.separator + "player" + this.playerId + "_output.txt";
+    this.location = "Player Output File" + File.separator + "player" + this.playerId 
+      + "_output.txt";
     try {
       File playerOutFile = new File(this.location);
       playerOutFile.getParentFile().mkdirs();
