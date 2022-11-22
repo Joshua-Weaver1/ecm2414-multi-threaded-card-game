@@ -12,7 +12,11 @@ public class PackTest {
   int testPackSize;
   Card[] testPackArray;
 
-  
+  /**
+   * Initialise the tests.
+   * 
+   * @throws Exception Exception.
+   */
   @Before
   public void initialise() throws Exception {
     testPackSize = (int) Math.round(Math.random() * 100);

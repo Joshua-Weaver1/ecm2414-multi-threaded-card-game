@@ -56,7 +56,6 @@ public class Player implements Runnable {
    * This is the getter for the player id.
    * 
    * @return The player id.
-   * @version 1.0
    */
   public int getPlayerId() {
     return this.playerId;
@@ -66,7 +65,6 @@ public class Player implements Runnable {
    * This is the getter for the number of cards.
    * 
    * @return The number of cards.
-   * @version 1.0
    */
   public int getNumberOfCards() {
     return this.numberOfcards;
@@ -76,7 +74,6 @@ public class Player implements Runnable {
    * This is the getter for the player cards.
    * 
    * @return The player cards.
-   * @version 1.0
    */
   public Card[] getCards() {
     return playerCards;
@@ -87,7 +84,6 @@ public class Player implements Runnable {
    * representation
    * of the player's cards.
    * 
-   * @version 1.0
    */
   public void addCardToPlayerDeck(Card card) {
     this.playerCards[numberOfcards++] = card;
@@ -101,7 +97,6 @@ public class Player implements Runnable {
    * This is the method that outputs a string to the player's log file.
    * 
    * @param string The string to be outputted.
-   * @version 1.0
    */
   public void playerOutput(String string) {
     try {
@@ -120,7 +115,6 @@ public class Player implements Runnable {
    * to see if a player has pulled 4 cards of the same number.
    * 
    * @return True if a player has 4 cards of the same number.
-   * @version 1.0
    */
   public boolean startGameCheck() {
     int cardPos = 0;
@@ -146,7 +140,6 @@ public class Player implements Runnable {
    * @param rightDeck    The deck to the right of the player.
    * @param leftDeck     The deck to the left of the player.
    * @return currentCard The card that the player has drawn.
-   * @version 1.0
    */
   public Card makeMove(Card cardSelected, int rightDeck, int leftDeck) {
     Random randomChoice = new Random();
@@ -182,7 +175,6 @@ public class Player implements Runnable {
    * This is the method that checks if a player has won.
    * 
    * @return True if a player has won.
-   * @version 1.0
    */
   public boolean winnerCheck() {
     Card firstCard = this.playerCards[0];
@@ -205,7 +197,6 @@ public class Player implements Runnable {
    * by collecting 4 cards of the same number.
    * 
    * @param playerId The id of the player
-   * @version 1.0
    */
   public void announceWinner(int playerId) {
     StringBuilder stringBuilder = new StringBuilder();

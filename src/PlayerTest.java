@@ -26,12 +26,15 @@ public class PlayerTest {
   Card[] exp = new Card[5];
   Random rand = new Random();
 
+  /**
+   * Requirements for tests.
+   */
   @Before
   public void initialise() {
 
     this.testPlayerId = (short) Math.round(Math.random() * 100);
-    this.testPlayerLocation = "Logs" + File.separator + "player" + this.testPlayerId +
-      "_output.txt";
+    this.testPlayerLocation = "Logs" + File.separator + "player" + this.testPlayerId
+      + "_output.txt";
     this.testPlayer = new Player(this.testPlayerId);
   }
 
@@ -60,7 +63,7 @@ public class PlayerTest {
   public void addCardToPlayerDeck() {
     card = new Card(testPlayer.getPlayerId());
     this.testPlayer.addCardToPlayerDeck(card);
-    assertEquals(1, this.testPlayer.getNumberOfCards());
+    assertEquals("Incorrect number of cards", 1, this.testPlayer.getNumberOfCards());
   }
 
   // Tests whether the the correct output is outputted to the player's log file
@@ -110,17 +113,17 @@ public class PlayerTest {
       BufferedReader bufferedReader = new BufferedReader(new FileReader(playerOutput));
 
       String line1 = bufferedReader.readLine();
+      assertEquals("Player " + this.testPlayerId + " created.", line1);
       String line2 = bufferedReader.readLine();
       String line3 = bufferedReader.readLine();
-      String line4 = bufferedReader.readLine();
-      String line5 = bufferedReader.readLine();
-
-      assertEquals("Player " + this.testPlayerId + " created.", line1);
       assertEquals("Player " + this.testPlayerId + " is starting with 1 1 1 1", line2);
       assertEquals("Player 5 has told player " + this.testPlayerId 
           + " that player 5 is the winner.", line3);
+      String line4 = bufferedReader.readLine();
       assertEquals("Player " + this.testPlayerId + " stops playing", line4);
+      String line5 = bufferedReader.readLine();
       assertEquals("Player " + this.testPlayerId + " cards: 1 1 1 1", line5);
+
       bufferedReader.close();
     } catch (IOException e) {
       System.out.println("Error reading file");

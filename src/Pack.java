@@ -35,7 +35,6 @@ public class Pack {
   public Pack(int x, String nameOfFile) throws IOException {
 
     try {
-      // Attributes
       int positionInList = 0;
       this.packOfCards = new Card[x * 8];
       int requiredAmount = x * 8;

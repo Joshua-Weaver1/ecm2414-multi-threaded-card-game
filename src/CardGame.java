@@ -4,6 +4,8 @@ import java.io.InputStreamReader;
 
 /**
  * This is the executable CardGame class.
+ * It contains the threading required for the game
+ * to run successfully.
  * 
  * @author Kevin Liu & Joshua Weaver
  * @version 1.0
@@ -16,22 +18,23 @@ public class CardGame {
    * @param nameOfFile The name of the file.
    * @param x          The number of players.
    * @throws IOException The exception for the file.
-   * @version 1.0
    */
   public static void startSimulation(String nameOfFile, int x) throws IOException {
-    // Variables
+
     Player[] players = new Player[x];
     Pack gameCards = new Pack(x, nameOfFile);
     Card[] packOfCards = gameCards.getPackOfCards();
     CardDeck[] decks = new CardDeck[x];
     boolean hasPlayerWon = false;
-    int victor = -1;
+    int victor = 0;
     int attempts = 0;
 
-    // Starting player threads
+    // Creating players
     for (int i = 1; i <= x; i++) {
       players[i - 1] = new Player(i);
+      // Starting player threads
       players[i - 1].run();
+      // Creating decks
       decks[i - 1] = new CardDeck(i);
     }
 
@@ -80,7 +83,7 @@ public class CardGame {
       synchronized (players[i]) {
         players[i].announceWinner(victor);
       }
-      decks[i].writeContentsToFile();
+      decks[i].fileOutput();
     }
   }
 
@@ -103,6 +106,8 @@ public class CardGame {
       System.out.println("The name of the file you have selected is: " + nameOfFile);
 
       startSimulation(nameOfFile, x);
+
+      bufferedReader.close();
 
     } catch (IOException e) {
       System.out.println("Error: " + e);
