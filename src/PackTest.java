@@ -1,4 +1,4 @@
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -42,8 +42,8 @@ public class PackTest {
   }
 
   // Tests whether the pack is the correct size
-  @Test
-  public void getPackSizeTest() {
-    assertEquals("Incorrect pack size", this.testPack.getPackOfCards().length, testPackArray.length);
+  @Test 
+  public void getPackOfCardsTest() {
+    assertTrue(this.testPack.getPackOfCards().length == testPackArray.length);
   }
 }
