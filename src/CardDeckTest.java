@@ -1,49 +1,47 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 public class CardDeckTest {
-
+    CardDeck deck = new CardDeck(1);
+    Card card = new Card(1);
+;
+    // Tests whether the method returns the correct DeckId
     @Test
     public void getDeckIdTest() {
-        CardDeck deck = new CardDeck(1);
         int deckID = deck.getDeckId();
 
-        assertEquals("Incorrect deck id", 1, deckID);
+        assertTrue(deckID == 1);
     }
 
+    // Tests if the deck size is correct
     @Test
     public void getDeckSizeTest() {
-        CardDeck deck = new CardDeck(1);
-
-        assertEquals("Incorrect deck size" , 0, deck.getDeckSize());
+        assertTrue(deck.getDeckSize() == 0);
     }
 
+    // Tests if the a card is added to the deck
     @Test
     public void addCardTest() {
-        CardDeck deck = new CardDeck(1);
-        Card card = new Card(1);
         deck.addToDeck(card);
 
-        assertEquals("Card was not added to deck", 1, deck.getDeckSize());
+        assertTrue(deck.getDeckSize() == 1);
     }
     
+    // Tests if a card is drawn from the left deck
     @Test
     public void drawCardFromLeftTest() {
-        CardDeck deck = new CardDeck(1);
-        Card card = new Card(1);
         deck.addToDeck(card);
         Card drawnCard = deck.drawCardFromLeft();
 
-        assertEquals("Card was not drawn from deck", 1, deck.getDeckSize());
+        assertTrue(deck.getDeckSize() == 1);
         assertEquals("Incorrect card was drawn", card, drawnCard);
     }
 
+    // Tests if a card is added to the right deck
     @Test
     public void addCardToRightTest() {
-        CardDeck deck = new CardDeck(1);
-        Card card = new Card(1);
-        
         deck.addToDeck(card);
         deck.drawCardFromLeft();
         Card card2 = new Card(2);
@@ -51,7 +49,4 @@ public class CardDeckTest {
 
         assertEquals("Card was not added to deck", 1, deck.getDeckSize());
     }
-
-
-    
 }

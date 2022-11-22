@@ -1,15 +1,12 @@
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-//This is a test class
 public class PackTest {
     Pack testPack;
     int testPackSize;
@@ -43,6 +40,7 @@ public class PackTest {
         testPack = new Pack(testPackSize, nameOfFile);
     }
 
+    // Tests whether the pack is the correct size 
     @Test
     public void getPackSizeTest() {
         assertEquals("Incorrect pack size", this.testPack.getPackOfCards().length, testPackArray.length);

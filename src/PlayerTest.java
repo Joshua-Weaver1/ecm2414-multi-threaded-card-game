@@ -32,6 +32,7 @@ public class PlayerTest {
         this.testPlayer = new Player(this.testPlayerId);
     }
 
+    // A method that checks if the cards are the same
     public static boolean allEqual() {
         Card[] cards = new Card[5];
         if (cards == null || cards.length == 0){
@@ -45,11 +46,13 @@ public class PlayerTest {
         return true;
     }
 
+    // Tests whether the correct player id is returned
     @Test
     public void getPlayerIdTest() {
         assertEquals("Incorrect player id", this.testPlayerId, this.testPlayer.getPlayerId());
     }
 
+    // Tests whether a card is added to the player's hand
     @Test
     public void addCardToPlayerDeck() {
         card = new Card(testPlayer.getPlayerId());
@@ -57,6 +60,7 @@ public class PlayerTest {
         assertEquals( 1,this.testPlayer.getNumberOfCards());
     }
 
+    // Tests whether the the correct output is outputted to the player's log file
     @Test
     public void playerOutputTest() {
         try {
@@ -68,6 +72,7 @@ public class PlayerTest {
         }
     }
 
+    // Tests whether a player has won the game (have won)
     @Test
     public void winnerCheckTrueTest() {
 
@@ -77,8 +82,7 @@ public class PlayerTest {
             assertTrue(this.testPlayer.winnerCheck());
     }
 
-    
-
+    // Tests whether a player has won the game (have not won)
     @Test
     public void winnerCheckFalseTest() {
         for (int i = 0; i < 4; i++) {
@@ -90,6 +94,7 @@ public class PlayerTest {
 
     }
 
+    // Tests whether the winner announces that they have won
     @Test
     public void announceWinnerTest() {
         for(int i = 0; i < exp.length; i++){
@@ -117,6 +122,9 @@ public class PlayerTest {
             System.out.println("Error reading file");
         }
     }
+
+    // Tests whether the player has drawn a card and also discarded a useless card 
+    // and kept a useful card
     @Test
     public void makeMoveTest() {
         Card takeCard = new Card((short) rand.nextInt(100)), card2, card4;
