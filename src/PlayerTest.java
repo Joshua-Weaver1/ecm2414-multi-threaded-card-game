@@ -86,8 +86,8 @@ public class PlayerTest {
       testPlayer.addCardToPlayerDeck(new Card((short) 1));
     }
     if (allEqual() == true) {
-        assertTrue(this.testPlayer.winnerCheck());
-      }
+      assertTrue(this.testPlayer.winnerCheck());
+    }
     if (allEqual() == false) {
       assertFalse(this.testPlayer.winnerCheck());
     }

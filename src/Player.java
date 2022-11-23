@@ -199,23 +199,21 @@ public class Player implements Runnable {
    * @param playerId The id of the player
    */
   public void announceWinner(int playerId) {
-    StringBuilder stringBuilder = new StringBuilder();
     if (playerId == this.playerId) {
-      stringBuilder.append("Player ").append(playerId).append(" has won the game!");
+      playerOutput("Player " + playerId + " has won the game!");
+      playerOutput("Player " + this.playerId + " stops playing");
     } else {
-      stringBuilder.append("Player ").append(playerId).append(" has told player ")
-          .append(this.playerId).append(" that player ").append(playerId).append(" is the winner.");
+      playerOutput("Player " + playerId + " has told player " + this.playerId + " that player " 
+          + playerId + " is the winner.");
+      playerOutput("Player " + this.playerId + " stops playing");
     }
-    playerOutput(stringBuilder.toString());
-    playerOutput("Player " + this.playerId + " stops playing");
 
-    StringBuilder showCards = new StringBuilder("Player ").append(this.playerId).append(' ');
     if (playerId == this.playerId) {
-      showCards.append("winning ");
+      playerOutput("Player " + this.playerId + " winning cards: " + this.playerCards[0] + " " 
+          + this.playerCards[1] + " " + this.playerCards[2] + " " + this.playerCards[3]);
+    } else {
+      playerOutput("Player " + this.playerId + " cards: " + this.playerCards[0] + " " 
+          + this.playerCards[1] + " " + this.playerCards[2] + " " + this.playerCards[3]);
     }
-    showCards.append("cards: ").append(
-        this.playerCards[0] + " " + this.playerCards[1] + " " + this.playerCards[2] + " " 
-        + this.playerCards[3]);
-    playerOutput(showCards.toString());
   }
 }
