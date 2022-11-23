@@ -79,26 +79,18 @@ public class PlayerTest {
     }
   }
 
-  // Tests whether a player has won the game (have won)
+  // Tests whether a player has won the game
   @Test
-  public void winnerCheckTrueTest() {
-
-    for (int i = 0; i < exp.length; i++) {
-      testPlayer.addCardToPlayerDeck(new Card((short) 1));
-    }
-        assertTrue(this.testPlayer.winnerCheck());
-      }
-
-  // Tests whether a player has won the game (have not won)
-  @Test
-  public void winnerCheckFalseTest() {
+  public void winnerCheckTest() {
     for (int i = 0; i < 4; i++) {
       testPlayer.addCardToPlayerDeck(new Card((short) 1));
     }
+    if (allEqual() == true) {
+        assertTrue(this.testPlayer.winnerCheck());
+      }
     if (allEqual() == false) {
       assertFalse(this.testPlayer.winnerCheck());
     }
-
   }
 
   // Tests whether the winner announces that they have won
