@@ -32,7 +32,7 @@ The game will execute and will display the winner of the game in the console. Yo
 Enter the code into command line or terminal: 
 1. Changes direcory
   ``
-  cd cards
+  cd cardsTest
   ``
 2. Run the test jar file
   ``
