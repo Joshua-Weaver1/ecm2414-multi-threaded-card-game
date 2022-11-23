@@ -86,8 +86,8 @@ public class PlayerTest {
     for (int i = 0; i < exp.length; i++) {
       testPlayer.addCardToPlayerDeck(new Card((short) 1));
     }
-    assertTrue(this.testPlayer.winnerCheck());
-  }
+        assertTrue(this.testPlayer.winnerCheck());
+      }
 
   // Tests whether a player has won the game (have not won)
   @Test
