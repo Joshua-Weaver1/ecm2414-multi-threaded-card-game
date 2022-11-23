@@ -33,7 +33,7 @@ public class PlayerTest {
   public void initialise() {
 
     this.testPlayerId = (short) Math.round(Math.random() * 100);
-    this.testPlayerLocation = "Logs" + File.separator + "player" + this.testPlayerId
+    this.testPlayerLocation = "Player Output File" + File.separator + "player" + this.testPlayerId
       + "_output.txt";
     this.testPlayer = new Player(this.testPlayerId);
   }

@@ -14,7 +14,7 @@ public class CardGameTest {
   public void startSimulationTest() {
     try {
       int x = (int) Math.round(Math.random() * 100) + 1;
-      String nameOfFile = "pack.txt";
+      String nameOfFile = "testPack.txt";
       File playerOutput = new File(nameOfFile);
       BufferedWriter output;
 
