@@ -1,0 +1,5 @@
+Player 1 created.
+Player 1 is starting with 1 1 1 100
+Player 0 has told player 1 that player 0 is the winner.
+Player 1 stops playing
+Player 1 cards: 1 1 1 100
