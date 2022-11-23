@@ -20,7 +20,7 @@ public class PackTest {
   @Before
   public void initialise() throws Exception {
     testPackSize = (int) Math.round(Math.random() * 100);
-    String nameOfFile = "pack.txt";
+    String nameOfFile = "testPack.txt";
     File playerOutput = new File(nameOfFile);
     BufferedWriter output;
 
