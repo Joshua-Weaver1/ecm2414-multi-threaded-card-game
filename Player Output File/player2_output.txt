@@ -1,14 +1,5 @@
 Player 2 created.
-Player 2 is starting with 3 2 3 2
-Player 2 draws 3 from deck 2
-Player 2 discards 3 to deck 3
-Player 2 current hand 3 2 3 2
-Player 2 draws 2 from deck 2
-Player 2 discards 3 to deck 3
-Player 2 current hand 3 2 2 2
-Player 2 draws 3 from deck 2
-Player 2 discards 3 to deck 3
-Player 2 current hand 3 2 2 2
-Player 1 has told player 2 that player 1 is the winner.
+Player 2 is starting with 2 2 2 100
+Player 0 has told player 2 that player 0 is the winner.
 Player 2 stops playing
-Player 2 cards: 3 2 2 2
+Player 2 cards: 2 2 2 100
