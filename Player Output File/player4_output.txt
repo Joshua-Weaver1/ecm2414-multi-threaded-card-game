@@ -1,5 +1,32 @@
 Player 4 created.
-Player 4 is starting with 4 4 4 4
-Player 0 has told player 4 that player 0 is the winner.
+Player 4 is starting with 1 12 23 34
+Player 4 draws 1 from deck 4
+Player 4 discards 23 to deck 5
+Player 4 current hand 1 12 1 34
+Player 4 draws 12 from deck 4
+Player 4 discards 1 to deck 5
+Player 4 current hand 1 12 12 34
+Player 4 draws 23 from deck 4
+Player 4 discards 34 to deck 5
+Player 4 current hand 1 12 12 23
+Player 4 draws 34 from deck 4
+Player 4 discards 23 to deck 5
+Player 4 current hand 1 12 12 34
+Player 4 draws 23 from deck 4
+Player 4 discards 34 to deck 5
+Player 4 current hand 1 12 12 23
+Player 4 draws 1 from deck 4
+Player 4 discards 12 to deck 5
+Player 4 current hand 1 12 1 23
+Player 4 draws 1 from deck 4
+Player 4 discards 23 to deck 5
+Player 4 current hand 1 12 1 1
+Player 4 draws 12 from deck 4
+Player 4 discards 1 to deck 5
+Player 4 current hand 12 12 1 1
+Player 4 draws 23 from deck 4
+Player 4 discards 1 to deck 5
+Player 4 current hand 12 12 23 1
+Player 38 has told player 4 that player 38 is the winner.
 Player 4 stops playing
-Player 4 cards: 4 4 4 4
+Player 4 cards: 12 12 23 1

@@ -1,5 +1,32 @@
 Player 2 created.
-Player 2 is starting with 2 2 2 2
-Player 0 has told player 2 that player 0 is the winner.
+Player 2 is starting with 1 12 22 33
+Player 2 draws 1 from deck 2
+Player 2 discards 33 to deck 3
+Player 2 current hand 1 12 22 1
+Player 2 draws 12 from deck 2
+Player 2 discards 1 to deck 3
+Player 2 current hand 12 12 22 1
+Player 2 draws 22 from deck 2
+Player 2 discards 12 to deck 3
+Player 2 current hand 12 22 22 1
+Player 2 draws 33 from deck 2
+Player 2 discards 22 to deck 3
+Player 2 current hand 12 22 33 1
+Player 2 draws 22 from deck 2
+Player 2 discards 1 to deck 3
+Player 2 current hand 12 22 33 22
+Player 2 draws 11 from deck 2
+Player 2 discards 22 to deck 3
+Player 2 current hand 12 11 33 22
+Player 2 draws 33 from deck 2
+Player 2 discards 22 to deck 3
+Player 2 current hand 12 11 33 33
+Player 2 draws 11 from deck 2
+Player 2 discards 33 to deck 3
+Player 2 current hand 12 11 11 33
+Player 2 draws 22 from deck 2
+Player 2 discards 11 to deck 3
+Player 2 current hand 12 11 22 33
+Player 38 has told player 2 that player 38 is the winner.
 Player 2 stops playing
-Player 2 cards: 2 2 2 2
+Player 2 cards: 12 11 22 33

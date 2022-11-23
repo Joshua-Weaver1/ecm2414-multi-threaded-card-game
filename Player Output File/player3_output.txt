@@ -1,5 +1,32 @@
 Player 3 created.
-Player 3 is starting with 3 3 3 3
-Player 0 has told player 3 that player 0 is the winner.
+Player 3 is starting with 1 12 23 33
+Player 3 draws 1 from deck 3
+Player 3 discards 23 to deck 4
+Player 3 current hand 1 12 1 33
+Player 3 draws 12 from deck 3
+Player 3 discards 1 to deck 4
+Player 3 current hand 12 12 1 33
+Player 3 draws 23 from deck 3
+Player 3 discards 1 to deck 4
+Player 3 current hand 12 12 23 33
+Player 3 draws 33 from deck 3
+Player 3 discards 12 to deck 4
+Player 3 current hand 12 33 23 33
+Player 3 draws 33 from deck 3
+Player 3 discards 23 to deck 4
+Player 3 current hand 12 33 33 33
+Player 3 draws 1 from deck 3
+Player 3 discards 33 to deck 4
+Player 3 current hand 12 33 1 33
+Player 3 draws 12 from deck 3
+Player 3 discards 33 to deck 4
+Player 3 current hand 12 12 1 33
+Player 3 draws 22 from deck 3
+Player 3 discards 1 to deck 4
+Player 3 current hand 12 12 22 33
+Player 3 draws 1 from deck 3
+Player 3 discards 12 to deck 4
+Player 3 current hand 1 12 22 33
+Player 38 has told player 3 that player 38 is the winner.
 Player 3 stops playing
-Player 3 cards: 3 3 3 3
+Player 3 cards: 1 12 22 33
