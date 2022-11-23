@@ -32,13 +32,9 @@ The game will execute and will display the winner of the game in the console. Yo
 Enter the code into command line or terminal: 
 1. Changes direcory
   ``
-  cd cards/src
+  cd cards
   ``
-2. Compiles the source code to byte code
+2. Run the test jar file
   ``
-  javac -cp .;../lib/junit-4.12.jar CardGameTestSuite.java
-  ``
-3. Runs the tests with JUnit
-``
-  java -cp .;../lib/junit-4.12.jar;../lib/hamcrest-core-1.3.jar org.junit.runner.JUnitCore CardGameTestSuite
+  java -jar tests.jar
   ``
