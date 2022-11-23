@@ -1,6 +1,0 @@
-Player 4 created.
-Player 4 is starting with 4 4 4 100
-Player 0 has told player 4 that player 0 is the winner.
-Player 4 stops playing
-Player 4 cards: 4 4 4 100
-
