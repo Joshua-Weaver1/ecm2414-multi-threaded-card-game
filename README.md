@@ -11,7 +11,7 @@ To win the game, a player needs four cards of the same value in their hand. If a
   ``
 3. Run the code
 4. Enter the number of desired players when asked (e.g. '4')
-5. Enter the name and full path of the pack file when asked (e.g. 'C:/example')
+5. Enter the name and full path of the pack file when asked (e.g. 'pack.txt')
 
 The game will execute and will display the winner of the game in the console. You can also find the player and deck output files in the 'logs' folder.
 
@@ -32,7 +32,7 @@ The game will execute and will display the winner of the game in the console. Yo
 Enter the code into command line or terminal: 
 1. Changes direcory
   ``
-  cd ecm2414-multi-threaded-card-game/src
+  cd cards/src
   ``
 2. Compiles the source code to byte code
   ``
