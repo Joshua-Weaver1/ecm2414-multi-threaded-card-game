@@ -44,7 +44,7 @@ public class Player implements Runnable {
       playerOutFile.getParentFile().mkdirs();
       if (!playerOutFile.createNewFile()) {
         BufferedWriter bwriter = new BufferedWriter(new FileWriter(location));
-        bwriter.write("Player " + this.playerId + " created.");
+        bwriter.write("");
         bwriter.close();
       }
     } catch (IOException e) {
@@ -101,8 +101,8 @@ public class Player implements Runnable {
   public void playerOutput(String string) {
     try {
       BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(location, true));
-      bufferedWriter.newLine();
       bufferedWriter.write(string);
+      bufferedWriter.newLine();
       bufferedWriter.close();
     } catch (IOException e) {
       System.out.println("Error:" + e);

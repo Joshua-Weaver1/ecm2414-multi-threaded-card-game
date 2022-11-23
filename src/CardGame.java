@@ -26,7 +26,7 @@ public class CardGame {
     Card[] packOfCards = gameCards.getPackOfCards();
     CardDeck[] decks = new CardDeck[x];
     boolean hasPlayerWon = false;
-    int victor = 0;
+    int victor = 1;
     int attempts = 0;
 
     // Creating players
@@ -53,7 +53,6 @@ public class CardGame {
     for (int i = 0; i < x; i++) {
       if (players[i].startGameCheck()) {
         hasPlayerWon = true;
-        players[i].playerOutput("Player " + players[i].getPlayerId() + " is the winner!");
         if (hasPlayerWon == true) {
           break;
         }

@@ -105,16 +105,14 @@ public class PlayerTest {
       BufferedReader bufferedReader = new BufferedReader(new FileReader(playerOutput));
 
       String line1 = bufferedReader.readLine();
-      assertEquals("Player " + this.testPlayerId + " created.", line1);
       String line2 = bufferedReader.readLine();
-      String line3 = bufferedReader.readLine();
-      assertEquals("Player " + this.testPlayerId + " is starting with 1 1 1 1", line2);
+      assertEquals("Player " + this.testPlayerId + " is starting with 1 1 1 1", line1);
       assertEquals("Player 5 has told player " + this.testPlayerId 
-          + " that player 5 is the winner.", line3);
+          + " that player 5 is the winner.", line2);
+      String line3 = bufferedReader.readLine();
+      assertEquals("Player " + this.testPlayerId + " stops playing", line3);
       String line4 = bufferedReader.readLine();
-      assertEquals("Player " + this.testPlayerId + " stops playing", line4);
-      String line5 = bufferedReader.readLine();
-      assertEquals("Player " + this.testPlayerId + " cards: 1 1 1 1", line5);
+      assertEquals("Player " + this.testPlayerId + " cards: 1 1 1 1", line4);
 
       bufferedReader.close();
     } catch (IOException e) {
